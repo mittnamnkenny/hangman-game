@@ -45,19 +45,16 @@ def play():
         raise SystemExit(f"Game over the word was: {word}")
 
 
-def start():
-    play_game = True
-
-    while play_game:
-        continue_playing = input("Like to play? y/n \n")
-        if continue_playing.lower() == "y":
+def main():
+    while True:
+        start_playing = input("Like to play? y/n \n")
+        if start_playing.lower() == "y":
             print("You have decided to play.")
             play()
-        elif continue_playing.lower() == "n":
-            print("Closing game.")
-            play_game = False
+        elif start_playing.lower() == "n":
+            raise SystemExit("Exiting Game!")
         else:
             print("That is not a valid option, Please try again.")
 
 
-start()
+main()
