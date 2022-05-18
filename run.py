@@ -47,15 +47,26 @@ def play():
         raise SystemExit(f"Game over the word was: {word}")
 
 
+def info():
+    while True:
+        username = input("What's your name? \n")
+        age = input("What's your age? \n")
+        if len(username) > 1 and age.isnumeric():
+            print(f"Ok {username} let's play.")
+            play()
+        else:
+            print("That is not a valid option, Please try again.")
+
+
 def game_rules():
     while True:
         rules = input("Like to read the rules? y/n \n")
         if rules.lower() == "y":
             print("Rules of the game.")
-            play()
+            info()
         elif rules.lower() == "n":
             print("Ok, no rules.")
-            play()
+            info()
         else:
             print("That is not a valid option, Please try again.")
 
