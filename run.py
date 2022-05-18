@@ -2,7 +2,6 @@ import random
 from art import hangman
 
 guesses = []
-wrong_guesses = []
 
 
 def play():
@@ -31,7 +30,6 @@ def play():
 
         if guess.lower() not in word.lower():
             failed_attempts += 1
-            wrong_guesses.append(guess)
             print(hangman[failed_attempts - 1])
             if failed_attempts == 7:
                 break
