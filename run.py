@@ -1,11 +1,14 @@
 import random
+from art import hangman
 
 guesses = []
 wrong_guesses = []
 
+
 def play():
     file = open("words.txt", "r")
     words = file.readlines()
+    file.close()
     word = random.choice(words)[:-1]
 
     failed_attempts = 0
@@ -29,6 +32,7 @@ def play():
         if guess.lower() not in word.lower():
             failed_attempts += 1
             wrong_guesses.append(guess)
+            print(hangman[failed_attempts - 1])
             if failed_attempts == 7:
                 break
 
