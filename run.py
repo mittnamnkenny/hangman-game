@@ -47,7 +47,14 @@ def play():
         raise SystemExit(f"Game over the word was: {word}")
 
 
+def splash():
+    print("Welcome To My")
+    print("Hangman Game!")
+    print(hangman[6])
+
+
 def main():
+    splash()
     while True:
         start_playing = input("Like to play? y/n \n")
         if start_playing.lower() == "y":
