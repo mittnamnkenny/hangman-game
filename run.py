@@ -6,7 +6,20 @@ def choose_word(age):
     file = open("words.txt", "r")
     words = file.readlines()
     file.close()
-    return random.choice(words)[:-1]
+
+    easy_words = []
+    hard_words = []
+
+    for word in words:
+        if len(word) > 2 and len(word) < 7:
+            easy_words.append(word)
+        elif len(word) >= 7:
+            hard_words.append(word)
+
+    if int(age) < 12:
+        return random.choice(easy_words)[:-1]
+    else:
+        return random.choice(hard_words)[:-1]
 
 
 guesses = []
