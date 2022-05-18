@@ -1,8 +1,12 @@
+import random
+
 guesses = []
 wrong_guesses = []
 
 def play():
-    word = "tester"
+    file = open("words.txt", "r")
+    words = file.readlines()
+    word = random.choice(words)[:-1]
 
     failed_attempts = 0
 
