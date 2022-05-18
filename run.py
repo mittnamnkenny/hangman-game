@@ -89,14 +89,11 @@ def game_rules():
             print("That is not a valid option, Please try again.")
 
 
-def splash():
+def main():
     print("Welcome To My")
     print("Hangman Game!")
     print(hangman[6])
 
-
-def main():
-    splash()
     while True:
         start_playing = input("Like to play? y/n \n")
         if start_playing.lower() == "y":
