@@ -1,14 +1,19 @@
 import random
 from art import hangman
 
-guesses = []
 
-
-def play():
+def choose_word(age):
     file = open("words.txt", "r")
     words = file.readlines()
     file.close()
-    word = random.choice(words)[:-1]
+    return random.choice(words)[:-1]
+
+
+guesses = []
+
+
+def play(username, age):
+    word = choose_word(age)
 
     failed_attempts = 0
 
@@ -41,10 +46,10 @@ def play():
                 playing = True
 
     if not playing:
-        raise SystemExit(f"You found the word! It was: {word}")
+        raise SystemExit(f"You found the word {username}! It was: {word}")
 
     else:
-        raise SystemExit(f"Game over the word was: {word}")
+        raise SystemExit(f"Game over {username} the word was: {word}")
 
 
 def info():
@@ -53,7 +58,7 @@ def info():
         age = input("What's your age? \n")
         if len(username) > 1 and age.isnumeric():
             print(f"Ok {username} let's play.")
-            play()
+            play(username, age)
         else:
             print("That is not a valid option, Please try again.")
 
