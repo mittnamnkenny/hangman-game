@@ -47,6 +47,19 @@ def play():
         raise SystemExit(f"Game over the word was: {word}")
 
 
+def game_rules():
+    while True:
+        rules = input("Like to read the rules? y/n \n")
+        if rules.lower() == "y":
+            print("Rules of the game.")
+            play()
+        elif rules.lower() == "n":
+            print("Ok, no rules.")
+            play()
+        else:
+            print("That is not a valid option, Please try again.")
+
+
 def splash():
     print("Welcome To My")
     print("Hangman Game!")
@@ -59,7 +72,7 @@ def main():
         start_playing = input("Like to play? y/n \n")
         if start_playing.lower() == "y":
             print("You have decided to play.")
-            play()
+            game_rules()
         elif start_playing.lower() == "n":
             raise SystemExit("Exiting Game!")
         else:
