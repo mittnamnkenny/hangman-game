@@ -1,6 +1,11 @@
 import random
 from art import hangman
 
+text = "\033[0m"
+highlight = "\033[7m"
+response = "\033[92m"
+alert = "\033[91m"
+
 
 def choose_word(age):
     file = open("words.txt", "r")
@@ -40,7 +45,6 @@ def play(username, age):
                 print(letter, end=" ")
             else:
                 print("_", end=" ")
-        print("")
 
         guess = input("\nChoose a letter:\n")
 
