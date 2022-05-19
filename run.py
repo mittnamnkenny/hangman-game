@@ -6,6 +6,13 @@ HIGHLIGHT = "\033[7m"
 RESPONSE = "\033[92m"
 ALERT = "\033[91m"
 
+colours = {
+    "red": "\033[91m",
+    "green": "\033[32m",
+    "yellow": "\033[33m",
+    "blue": "\033[34m"
+}
+
 
 def choose_word(age):
     file = open("words.txt", "r")
