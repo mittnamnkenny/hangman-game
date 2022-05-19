@@ -22,9 +22,8 @@ def choose_word(age):
             hard_words.append(word)
 
     if int(age) < 7:
-        raise SystemExit(
-            f"\n{ALERT}You are too young to play this game!{TEXT}\n"
-            )
+        print(f"\n{ALERT}You are too young to play this game!")
+        raise SystemExit(f"\nExiting Game.{TEXT}\n")
     elif int(age) < 12:
         return random.choice(easy_words)[:-1]
     else:
@@ -69,13 +68,13 @@ def play(username, age):
 
     if not playing:
         raise SystemExit(
-            f"\n{RESPONSE}You found the word {TEXT}{username.upper()}"
+            f"\n{RESPONSE}You found the word {TEXT}{username.capitalize()}"
             f"{RESPONSE}! It was: {TEXT}{word}\n"
             )
 
     else:
         raise SystemExit(
-            f"\n{ALERT}Game over {TEXT}{username.upper()}"
+            f"\n{ALERT}Game over {TEXT}{username.capitalize()}"
             f" {ALERT}the word was: {TEXT}{word}\n"
             )
 
@@ -85,7 +84,7 @@ def info():
         username = input("\nWhat's your name?\n")
         age = input("\nWhat's your age?\n")
         if len(username) > 1 and age.isnumeric():
-            print(f"\n{RESPONSE}Ok {username.upper()} let's play.{TEXT}")
+            print(f"\n{RESPONSE}Ok {username.capitalize()} let's play.{TEXT}")
             play(username, age)
         else:
             print(
@@ -121,7 +120,7 @@ def main():
             print(f"\n{RESPONSE}You have decided to play.{TEXT}")
             game_rules()
         elif start_playing.lower() == "n":
-            raise SystemExit(f"\n{ALERT}Exiting Game!{TEXT}\n")
+            raise SystemExit(f"\n{ALERT}Exiting Game.{TEXT}\n")
         else:
             print(
                 f"\n{ALERT}That is not a valid option,"
