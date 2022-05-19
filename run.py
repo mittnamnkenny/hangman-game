@@ -42,7 +42,7 @@ def play(username, age):
                 print("_", end=" ")
         print("")
 
-        guess = input("Choose a letter:\n")
+        guess = input("\nChoose a letter:\n")
 
         guesses.append(guess.lower())
 
@@ -60,60 +60,63 @@ def play(username, age):
 
     if not playing:
         raise SystemExit(
-            f"\033[92mYou found the word \033[0m{username}\033[92m!"
-            f" It was: \033[0m{word}"
+            f"\n\033[92mYou found the word \033[0m{username}\033[92m!"
+            f" It was: \033[0m{word}\n"
             )
 
     else:
         raise SystemExit(
-            f"\033[91mGame over \033[0m{username}"
-            f" \033[91mthe word was: \033[0m{word}"
+            f"\n\033[91mGame over \033[0m{username}"
+            f" \033[91mthe word was: \033[0m{word}\n"
             )
 
 
 def info():
     while True:
-        username = input("What's your name? \n")
-        age = input("What's your age? \n")
+        username = input("\nWhat's your name?\n")
+        age = input("\nWhat's your age?\n")
         if len(username) > 1 and age.isnumeric():
-            print(f"\033[92mOk {username} let's play.\033[0m")
+            print(f"\n\033[92mOk {username} let's play.\033[0m\n")
             play(username, age)
         else:
             print(
-                "\033[91mThat is not a valid option, Please try again.\033[0m"
+                "\n\033[91mThat is not a valid option,"
+                " Please try again.\033[0m"
                 )
 
 
 def game_rules():
     while True:
-        rules = input("Like to read the rules? \033[7m y/n \033[0m\n")
+        rules = input("\nLike to read the rules? \033[7m y/n \033[0m\n")
         if rules.lower() == "y":
-            print("\033[92mRules of the game.\033[0m")
+            print("\n\033[92mRules of the game.\033[0m")
             info()
         elif rules.lower() == "n":
-            print("\033[92mOk, no rules.\033[0m")
+            print("\n\033[92mOk, no rules.\033[0m")
             info()
         else:
             print(
-                "\033[91mThat is not a valid option, Please try again.\033[0m"
+                "\n\033[91mThat is not a valid option,"
+                " Please try again.\033[0m"
                 )
 
 
 def main():
-    print("\033[42mWelcome To My\033[0m")
+    print("\n\033[42mWelcome To My\033[0m")
     print("\033[42mHangman Game!\033[0m")
     print(f"\033[92m{hangman[6]}\033[0m")
 
     while True:
-        start_playing = input("Like to play? \033[7m y/n \033[0m\n")
+        start_playing = input("\nLike to play? \033[7m y/n \033[0m\n")
         if start_playing.lower() == "y":
-            print("\033[92mYou have decided to play.\033[0m")
+            print("\n\033[92mYou have decided to play.\033[0m")
             game_rules()
         elif start_playing.lower() == "n":
-            raise SystemExit("\033[91mExiting Game!\033[0m")
+            raise SystemExit("\n\033[91mExiting Game!\033[0m\n")
         else:
             print(
-                "\033[91mThat is not a valid option, Please try again.\033[0m"
+                "\n\033[91mThat is not a valid option,"
+                " Please try again.\033[0m"
                 )
 
 
