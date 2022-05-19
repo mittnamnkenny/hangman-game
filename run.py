@@ -21,7 +21,11 @@ def choose_word(age):
         elif len(word) >= 7:
             hard_words.append(word)
 
-    if int(age) < 12:
+    if int(age) < 7:
+        raise SystemExit(
+            f"\n{ALERT}You are too young to play this game!{TEXT}\n"
+            )
+    elif int(age) < 12:
         return random.choice(easy_words)[:-1]
     else:
         return random.choice(hard_words)[:-1]
@@ -65,8 +69,8 @@ def play(username, age):
 
     if not playing:
         raise SystemExit(
-            f"\n{RESPONSE}You found the word {TEXT}{username.upper()}{RESPONSE}!"
-            f" It was: {TEXT}{word}\n"
+            f"\n{RESPONSE}You found the word {TEXT}{username.upper()}"
+            f"{RESPONSE}! It was: {TEXT}{word}\n"
             )
 
     else:
