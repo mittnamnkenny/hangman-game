@@ -65,13 +65,13 @@ def play(username, age):
 
     if not playing:
         raise SystemExit(
-            f"\n{RESPONSE}You found the word {TEXT}{username}{RESPONSE}!"
+            f"\n{RESPONSE}You found the word {TEXT}{username.upper()}{RESPONSE}!"
             f" It was: {TEXT}{word}\n"
             )
 
     else:
         raise SystemExit(
-            f"\n{ALERT}Game over {TEXT}{username}"
+            f"\n{ALERT}Game over {TEXT}{username.upper()}"
             f" {ALERT}the word was: {TEXT}{word}\n"
             )
 
@@ -81,7 +81,7 @@ def info():
         username = input("\nWhat's your name?\n")
         age = input("\nWhat's your age?\n")
         if len(username) > 1 and age.isnumeric():
-            print(f"\n{RESPONSE}Ok {username} let's play.{TEXT}")
+            print(f"\n{RESPONSE}Ok {username.upper()} let's play.{TEXT}")
             play(username, age)
         else:
             print(
