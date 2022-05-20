@@ -135,4 +135,15 @@ def main():
                 )
 
 
-main()
+#main()
+
+
+file = open("words.txt", "r")
+easy_words_file = open("easy_words.txt", "w")
+hard_words_file = open("hard_words.txt", "w")
+
+for word in file.readlines():
+    if len(word) > 2 and len(word) < 7:
+        easy_words_file.write(word)
+    elif len(word) >= 7:
+        hard_words_file.write(word)
