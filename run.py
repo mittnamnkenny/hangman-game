@@ -33,6 +33,10 @@ def choose_word(age):
 
 
 def calc_colour(fav_colour):
+    for key, value in colours.items():
+        if fav_colour.lower().find(key) != -1:
+            return value
+    print("Favourite colour not listed.")
     return random.choice(list(colours.values()))
 
 
