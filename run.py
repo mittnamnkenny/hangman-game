@@ -61,16 +61,19 @@ def play(username, age, fav_colour):
     playing = True
 
     while playing:
-        print(f"\nFailed attempts: {HIGHLIGHT} {failed_attempts}/7 {TEXT}\n")
+        print(
+            f"\n{TEXT}Failed attempts:"
+            f" {HIGHLIGHT} {failed_attempts}/7 {TEXT}\n"
+            )
 
         for letter in word:
             if letter.lower() in guesses:
-                print(letter, end=" ")
+                print(play_colour, letter, end=" ")
             else:
-                print("_", end=" ")
+                print(play_colour, "_", end=" ")
         print("")
 
-        guess = input("\nChoose a letter:\n")
+        guess = input(f"\n{TEXT}Choose a letter:\n")
 
         guesses.append(guess.lower())
 
