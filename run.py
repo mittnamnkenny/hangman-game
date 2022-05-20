@@ -51,6 +51,18 @@ def calc_colour(fav_colour):
 guesses = []
 
 
+def ask_guess():
+    while True:
+        guess = input(f"\n{TEXT}Choose a letter:\n")
+        if guess.isalpha() and len(guess) == 1:
+            return guess
+        else:
+            print(
+                f"\n{ALERT}That is not a valid option,"
+                f" Please try again.{TEXT}"
+                )
+
+
 def play(username, age, fav_colour):
     word = choose_word(age)
 
@@ -73,7 +85,7 @@ def play(username, age, fav_colour):
                 print(play_colour, "_", end=" ")
         print("")
 
-        guess = input(f"\n{TEXT}Choose a letter:\n")
+        guess = ask_guess()
 
         guesses.append(guess.lower())
 
