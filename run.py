@@ -35,8 +35,9 @@ def choose_word(age):
 guesses = []
 
 
-def play(username, age):
+def play(username, age, fav_colour):
     word = choose_word(age)
+    print(fav_colour)
 
     failed_attempts = 0
 
@@ -85,9 +86,10 @@ def info():
     while True:
         username = input("\nWhat's your name?\n")
         age = input("\nWhat's your age?\n")
-        if len(username) > 1 and age.isnumeric():
+        fav_colour = input("\nWhat's your favourite colour?\n")
+        if len(username) > 1 and age.isnumeric() and len(fav_colour) > 1:
             print(f"\n{RESPONSE}Ok {username.capitalize()} let's play.{TEXT}")
-            play(username, age)
+            play(username, age, fav_colour)
         else:
             print(
                 f"\n{ALERT}That is not a valid option,"
