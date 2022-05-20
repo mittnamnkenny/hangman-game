@@ -1,4 +1,5 @@
 import random
+import time
 from art import hangman
 
 TEXT = "\033[0m"
@@ -25,6 +26,7 @@ def choose_word(age):
 
     if int(age) < 7:
         print(f"\n{ALERT}You are too young to play this game!")
+        time.sleep(1)
         raise SystemExit(f"\nExiting Game.{TEXT}\n")
     elif int(age) < 15:
         return random.choice(easy_words)[:-1]
@@ -40,6 +42,7 @@ def calc_colour(fav_colour):
         f'\n{RESPONSE}Favourite colour'
         f' "{TEXT}{fav_colour}{RESPONSE}" not listed.\n'
         )
+    time.sleep(1)
     random_colour_items = random.choice(list(colours.items()))
     print(
         f"{random_colour_items[1]}{random_colour_items[0].capitalize()}"
@@ -134,6 +137,7 @@ def game_rules():
         rules = input(f"\nLike to read the rules? {HIGHLIGHT} y/n {TEXT}\n")
         if rules.lower() == "y":
             print(f"\n{RESPONSE}Rules of the game.{TEXT}")
+            time.sleep(1)
             info()
         elif rules.lower() == "n":
             print(f"\n{RESPONSE}Ok, no rules.{TEXT}")
