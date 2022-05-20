@@ -32,12 +32,17 @@ def choose_word(age):
         return random.choice(hard_words)[:-1]
 
 
+def calc_colour(fav_colour):
+    return random.choice(list(colours.values()))
+
+
 guesses = []
 
 
 def play(username, age, fav_colour):
     word = choose_word(age)
-    print(fav_colour)
+
+    play_colour = calc_colour(fav_colour)
 
     failed_attempts = 0
 
@@ -59,7 +64,7 @@ def play(username, age, fav_colour):
 
         if guess.lower() not in word.lower():
             failed_attempts += 1
-            print(hangman[failed_attempts - 1])
+            print(f"{play_colour}{hangman[failed_attempts - 1]}")
             if failed_attempts == 7:
                 break
 
