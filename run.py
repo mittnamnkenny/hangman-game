@@ -15,23 +15,18 @@ colours = {
 
 
 def choose_word(age):
-    file = open("words.txt", "r")
-    words = file.readlines()
-    file.close()
+    easy_words_file = open("easy_words.txt", "r")
+    easy_words = easy_words_file.readlines()
+    easy_words_file.close()
 
-    easy_words = []
-    hard_words = []
-
-    for word in words:
-        if len(word) > 2 and len(word) < 7:
-            easy_words.append(word)
-        elif len(word) >= 7:
-            hard_words.append(word)
+    hard_words_file = open("hard_words.txt", "r")
+    hard_words = hard_words_file.readlines()
+    hard_words_file.close()
 
     if int(age) < 7:
         print(f"\n{ALERT}You are too young to play this game!")
         raise SystemExit(f"\nExiting Game.{TEXT}\n")
-    elif int(age) < 12:
+    elif int(age) < 15:
         return random.choice(easy_words)[:-1]
     else:
         return random.choice(hard_words)[:-1]
@@ -135,15 +130,4 @@ def main():
                 )
 
 
-#main()
-
-
-file = open("words.txt", "r")
-easy_words_file = open("easy_words.txt", "w")
-hard_words_file = open("hard_words.txt", "w")
-
-for word in file.readlines():
-    if len(word) > 2 and len(word) < 7:
-        easy_words_file.write(word)
-    elif len(word) >= 7:
-        hard_words_file.write(word)
+main()
