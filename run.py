@@ -58,7 +58,10 @@ def ask_guess():
     while True:
         guess = input(f"\n{TEXT}Choose a letter:\n")
         if guess.isalpha() and len(guess) == 1:
-            return guess
+            if guess.lower() not in guesses:
+                return guess
+            else:
+                print(f"\n{ALERT}You already tried: {TEXT}{guess}")
         else:
             print(
                 f"\n{ALERT}That is not a valid option,"
