@@ -36,8 +36,16 @@ def calc_colour(fav_colour):
     for key, value in colours.items():
         if fav_colour.lower().find(key) != -1:
             return value
-    print("Favourite colour not listed.")
-    return random.choice(list(colours.values()))
+    print(
+        f'\n{RESPONSE}Favourite colour'
+        f' "{TEXT}{fav_colour}{RESPONSE}" not listed.\n'
+        )
+    random_colour_items = random.choice(list(colours.items()))
+    print(
+        f"{random_colour_items[1]}{random_colour_items[0].capitalize()}"
+        f" {TEXT}was chosen instead."
+        )
+    return random_colour_items[1]
 
 
 guesses = []
