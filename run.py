@@ -120,21 +120,9 @@ def play(username, age, fav_colour):
             )
 
 
-def val_username():
+def val_age(username):
     while True:
-        result = input("\nWhat's your name?\n")
-        if len(result) > 1 and result.isalpha():
-            return result
-        else:
-            print(
-                f"\n{ALERT}That is not a valid option,"
-                f" Please try again.{TEXT}"
-                )
-
-
-def val_age():
-    while True:
-        result = input("\nHow old are you?\n")
+        result = input(f"\nHow old are you {username.capitalize()}?\n")
         if result.isnumeric():
             if int(result) < 7:
                 print(f"\n{ALERT}You are too young to play this game!")
@@ -149,9 +137,9 @@ def val_age():
                 )
 
 
-def val_fav_colour():
+def val_text(val):
     while True:
-        result = input("\nWhat's your favourite colour?\n")
+        result = input(f"\nWhat's your {val}?\n")
         if len(result) > 1 and result.isalpha():
             return result
         else:
@@ -188,9 +176,9 @@ def main():
         if start_playing.lower() == "y":
             print(f"\n{RESPONSE}You have decided to play.{TEXT}")
             game_rules()
-            username = val_username()
-            age = val_age()
-            fav_colour = val_fav_colour()
+            username = val_text("name")
+            age = val_age(username)
+            fav_colour = val_text("favourite colour")
             play(username, age, fav_colour)
         elif start_playing.lower() == "n":
             raise SystemExit(f"\n{ALERT}Exiting Game.{TEXT}\n")
