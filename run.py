@@ -124,14 +124,35 @@ def play(username, age, fav_colour):
             )
 
 
-def info():
+def val_username():
     while True:
-        username = input("\nWhat's your name?\n")
-        age = input("\nWhat's your age?\n")
-        fav_colour = input("\nWhat's your favourite colour?\n")
-        if len(username) > 1 and age.isnumeric() and len(fav_colour) > 1:
-            print(f"\n{RESPONSE}Ok {username.capitalize()} let's play.{TEXT}")
-            play(username, age, fav_colour)
+        result = input("\nWhat's your name?\n")
+        if len(result) > 1 and result.isalpha():
+            return result
+        else:
+            print(
+                f"\n{ALERT}That is not a valid option,"
+                f" Please try again.{TEXT}"
+                )
+
+
+def val_age():
+    while True:
+        result = input("\nHow old are you?\n")
+        if result.isnumeric():
+            return result
+        else:
+            print(
+                f"\n{ALERT}That is not a valid option,"
+                f" Please try again.{TEXT}"
+                )
+
+
+def val_fav_colour():
+    while True:
+        result = input("\nWhat's your favourite colour?\n")
+        if len(result) > 1 and result.isalpha():
+            return result
         else:
             print(
                 f"\n{ALERT}That is not a valid option,"
@@ -144,11 +165,11 @@ def game_rules():
         rules = input(f"\nLike to read the rules? {HIGHLIGHT} y/n {TEXT}\n")
         if rules.lower() == "y":
             print(f"\n{RESPONSE}Rules of the game.{TEXT}")
-            time.sleep(1)
-            info()
+            time.sleep(5)
+            break
         elif rules.lower() == "n":
             print(f"\n{RESPONSE}Ok, no rules.{TEXT}")
-            info()
+            break
         else:
             print(
                 f"\n{ALERT}That is not a valid option,"
@@ -166,6 +187,10 @@ def main():
         if start_playing.lower() == "y":
             print(f"\n{RESPONSE}You have decided to play.{TEXT}")
             game_rules()
+            username = val_username()
+            age = val_age()
+            fav_colour = val_fav_colour()
+            play(username, age, fav_colour)
         elif start_playing.lower() == "n":
             raise SystemExit(f"\n{ALERT}Exiting Game.{TEXT}\n")
         else:
