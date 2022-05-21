@@ -36,6 +36,7 @@ def choose_word(age):
 def calc_colour(fav_colour):
     for key, value in colours.items():
         if fav_colour.lower().find(key) != -1:
+            print(f"\n{value}{key.capitalize()} {TEXT}is a good choice.")
             return value
     print(
         f'\n{RESPONSE}Favourite colour'
@@ -151,7 +152,9 @@ def val_text(val):
 
 def game_rules():
     while True:
-        rules = input(f"\nLike to read the rules? {HIGHLIGHT} y/n {TEXT}\n")
+        rules = input(
+            f"\nDo you want to read the rules? {HIGHLIGHT} y/n {TEXT}\n"
+            )
         if rules.lower() == "y":
             print(f"\n{RESPONSE}Rules of the game.{TEXT}")
             time.sleep(5)
@@ -172,7 +175,9 @@ def main():
     print(f"{RESPONSE}{hangman[6]}{TEXT}")
 
     while True:
-        start_playing = input(f"\nLike to play? {HIGHLIGHT} y/n {TEXT}\n")
+        start_playing = input(
+            f"\nDo you want to play? {HIGHLIGHT} y/n {TEXT}\n"
+            )
         if start_playing.lower() == "y":
             print(f"\n{RESPONSE}You have decided to play.{TEXT}")
             game_rules()
