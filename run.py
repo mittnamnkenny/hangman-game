@@ -8,10 +8,13 @@ RESPONSE = "\033[92m"
 ALERT = "\033[91m"
 
 colours = {
-    "red": "\033[91m",
+    "red": "\033[31m",
     "green": "\033[32m",
     "yellow": "\033[33m",
-    "blue": "\033[34m"
+    "blue": "\033[34m",
+    "pink": "\033[95m",
+    "cyan": "\033[36m",
+    "purple": "\033[35m"
 }
 
 
@@ -28,7 +31,7 @@ def choose_word(age):
         print(f"\n{ALERT}You are too young to play this game!")
         time.sleep(1)
         raise SystemExit(f"\nExiting Game.{TEXT}\n")
-    elif int(age) < 15:
+    elif int(age) < 16:
         return random.choice(easy_words)[:-1]
     else:
         return random.choice(hard_words)[:-1]
@@ -62,6 +65,7 @@ def ask_guess():
                 return guess
             else:
                 print(f"\n{ALERT}You already tried: {TEXT}{guess}")
+                time.sleep(1)
         else:
             print(
                 f"\n{ALERT}That is not a valid option,"
