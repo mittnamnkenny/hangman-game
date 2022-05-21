@@ -27,11 +27,7 @@ def choose_word(age):
     hard_words = hard_words_file.readlines()
     hard_words_file.close()
 
-    if int(age) < 7:
-        print(f"\n{ALERT}You are too young to play this game!")
-        time.sleep(1)
-        raise SystemExit(f"\nExiting Game.{TEXT}\n")
-    elif int(age) < 16:
+    if int(age) < 16:
         return random.choice(easy_words)[:-1]
     else:
         return random.choice(hard_words)[:-1]
@@ -140,7 +136,12 @@ def val_age():
     while True:
         result = input("\nHow old are you?\n")
         if result.isnumeric():
-            return result
+            if int(result) < 7:
+                print(f"\n{ALERT}You are too young to play this game!")
+                time.sleep(1)
+                raise SystemExit(f"\nExiting Game.{TEXT}\n")
+            else:
+                return result
         else:
             print(
                 f"\n{ALERT}That is not a valid option,"
