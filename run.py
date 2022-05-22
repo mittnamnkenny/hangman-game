@@ -17,8 +17,8 @@ colours = {
     "purple": "\033[35m"
 }
 
-feedback = [["nice", "a good choice", "my favourite too"],
-            ["well played", "good job", "you did it"]]
+feedback = [["nice", "a good choice", "great", "perfect", "alright", "ok"],
+            ["well played", "good job", "you did it", "great success"]]
 
 
 def choose_word(age):
@@ -167,7 +167,10 @@ def game_rules():
             time.sleep(5)
             break
         elif rules.lower() == "n":
-            print(f"\n{RESPONSE}Ok, no rules.{TEXT}")
+            print(
+                f"\n{RESPONSE}{random.choice(feedback[0]).capitalize()},"
+                f" no rules.{TEXT}"
+                )
             break
         else:
             print(
@@ -186,7 +189,10 @@ def main():
             f"\nDo you want to play? {HIGHLIGHT} y/n {TEXT}\n"
             )
         if start_playing.lower() == "y":
-            print(f"\n{RESPONSE}You have decided to play.{TEXT}")
+            print(
+                f"\n{RESPONSE}{random.choice(feedback[0]).capitalize()},"
+                f" you have decided to play.{TEXT}"
+                )
             game_rules()
             username = val_text("name")
             age = val_age(username)
