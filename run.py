@@ -76,6 +76,27 @@ def ask_guess():
                 )
 
 
+def play_again(username, age, fav_colour):
+    while True:
+        again = input(
+            f"\n{TEXT}Do you want to play again? {HIGHLIGHT} y/n {TEXT}\n"
+            )
+        if again.lower() == "y":
+            print(
+                f"\n{RESPONSE}{random.choice(feedback[0]).capitalize()},"
+                f" you have decided to play again.{TEXT}"
+                )
+            guesses.clear()
+            play(username, age, fav_colour)
+        elif again.lower() == "n":
+            raise SystemExit(f"\n{ALERT}Exiting Game.{TEXT}\n")
+        else:
+            print(
+                f"\n{ALERT}That is not a valid option,"
+                f" Please try again.{TEXT}"
+                )
+
+
 def play(username, age, fav_colour):
     word = choose_word(age)
 
@@ -115,17 +136,21 @@ def play(username, age, fav_colour):
                 playing = True
 
     if not playing:
-        raise SystemExit(
+        print(
             f"\n{RESPONSE}{random.choice(feedback[1]).capitalize()}"
             f" {TEXT}{username.capitalize()} {RESPONSE}you found the word!"
             f" It was: {play_colour}{word}\n"
             )
+        time.sleep(1)
+        play_again(username, age, fav_colour)
 
     else:
-        raise SystemExit(
+        print(
             f"\n{ALERT}Game over {TEXT}{username.capitalize()}"
             f" {ALERT}the word was: {play_colour}{word}\n"
             )
+        time.sleep(1)
+        play_again(username, age, fav_colour)
 
 
 def val_age(username):
