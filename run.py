@@ -163,7 +163,16 @@ def game_rules():
             f"\nDo you want to read the rules? {HIGHLIGHT} y/n {TEXT}\n"
             )
         if rules.lower() == "y":
-            print(f"\n{RESPONSE}Rules of the game.{TEXT}")
+            print(
+                f"\n{ALERT}h _ n g m _ n"
+                f"\n{RESPONSE}Hangman is a simple word guessing game. \nYou"
+                f" try to guess the secret word letter by letter. \nThe"
+                f" number of incorrect guesses before the game ends is 7."
+                f" \nGuess the word before your man gets hung. \nIf you"
+                f" are younger than 16 years you are presented with easier"
+                f" words. \n{ALERT}You must be older than 7 years to play this"
+                f" game.{TEXT}"
+                )
             time.sleep(5)
             break
         elif rules.lower() == "n":
