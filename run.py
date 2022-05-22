@@ -17,6 +17,9 @@ colours = {
     "purple": "\033[35m"
 }
 
+feedback = [["nice", "a good choice", "my favourite too"],
+            ["well played", "good job", "you did it"]]
+
 
 def choose_word(age):
     easy_words_file = open("easy_words.txt", "r")
@@ -36,7 +39,10 @@ def choose_word(age):
 def calc_colour(fav_colour):
     for key, value in colours.items():
         if fav_colour.lower().find(key) != -1:
-            print(f"\n{value}{key.capitalize()} {TEXT}is a good choice.")
+            print(
+                f"\n{value}{key.capitalize()} {TEXT}is"
+                f" {random.choice(feedback[0])}."
+                )
             return value
     print(
         f'\n{RESPONSE}Favourite colour'
@@ -110,14 +116,15 @@ def play(username, age, fav_colour):
 
     if not playing:
         raise SystemExit(
-            f"\n{RESPONSE}You found the word {TEXT}{username.capitalize()}"
-            f"{RESPONSE}! It was: {TEXT}{word}\n"
+            f"\n{RESPONSE}{random.choice(feedback[1]).capitalize()}"
+            f" {TEXT}{username.capitalize()} {RESPONSE}you found the word!"
+            f" It was: {play_colour}{word}\n"
             )
 
     else:
         raise SystemExit(
             f"\n{ALERT}Game over {TEXT}{username.capitalize()}"
-            f" {ALERT}the word was: {TEXT}{word}\n"
+            f" {ALERT}the word was: {play_colour}{word}\n"
             )
 
 
