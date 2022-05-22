@@ -22,6 +22,10 @@ feedback = [["nice", "a good choice", "great", "perfect", "alright", "ok"],
 
 
 def choose_word(age):
+    """
+    Choses random word from txt file.
+    Based on age input from user.
+    """
     easy_words_file = open("easy_words.txt", "r")
     easy_words = easy_words_file.readlines()
     easy_words_file.close()
@@ -30,6 +34,7 @@ def choose_word(age):
     hard_words = hard_words_file.readlines()
     hard_words_file.close()
 
+    # Random word based on age input.
     if int(age) < 16:
         return random.choice(easy_words)[:-1]
     else:
@@ -37,13 +42,19 @@ def choose_word(age):
 
 
 def calc_colour(fav_colour):
+    """
+    Function for displaying favourite colour.
+    Choses random if not listed.
+    """
     for key, value in colours.items():
+        # Find a matching key in colours dict.
         if fav_colour.lower().find(key) != -1:
             print(
                 f"\n{value}{key.capitalize()} {TEXT}is"
                 f" {random.choice(feedback[0])}."
                 )
             return value
+    # Favourite colour not in dict.
     print(
         f'\n{RESPONSE}Favourite colour'
         f' "{TEXT}{fav_colour}{RESPONSE}" not listed.\n'
@@ -61,6 +72,11 @@ guesses = []
 
 
 def ask_guess():
+    """
+    Validate user guess.
+    Only one alphabet letter is accepted.
+    Check if letter already been guessed.
+    """
     while True:
         guess = input(f"\n{TEXT}Choose a letter:\n")
         if guess.isalpha() and len(guess) == 1:
@@ -77,6 +93,10 @@ def ask_guess():
 
 
 def play_again(username, age, fav_colour):
+    """
+    Ask the user to play again
+    without resetting user info.
+    """
     while True:
         again = input(
             f"\n{TEXT}Do you want to play again? {HIGHLIGHT} y/n {TEXT}\n"
@@ -98,6 +118,11 @@ def play_again(username, age, fav_colour):
 
 
 def play(username, age, fav_colour):
+    """
+    Main game function.
+    Game logic was inspired by NeuralNine:
+    https://www.youtube.com/watch?v=5x6iAKdJB6U
+    """
     word = choose_word(age)
 
     play_colour = calc_colour(fav_colour)
@@ -106,12 +131,14 @@ def play(username, age, fav_colour):
 
     playing = True
 
+    # Will loop until failed_attempts reaches 7 or secret word is guessed.
     while playing:
         print(
             f"\n{TEXT}Failed attempts:"
             f" {HIGHLIGHT} {failed_attempts}/7 {TEXT}\n"
             )
 
+        # Display secret word as underscore if not correct letter guessed.
         for letter in word:
             if letter.lower() in guesses:
                 print(play_colour, letter, end=" ")
@@ -123,6 +150,7 @@ def play(username, age, fav_colour):
 
         guesses.append(guess.lower())
 
+        # Code to increment failed_attempts.
         if guess.lower() not in word.lower():
             failed_attempts += 1
             print(f"{play_colour}{hangman[failed_attempts - 1]}")
@@ -135,6 +163,7 @@ def play(username, age, fav_colour):
             if letter.lower() not in guesses:
                 playing = True
 
+    # User found the secret word.
     if not playing:
         print(
             f"\n{RESPONSE}{random.choice(feedback[1]).capitalize()}"
@@ -144,6 +173,7 @@ def play(username, age, fav_colour):
         time.sleep(1)
         play_again(username, age, fav_colour)
 
+    # Failed_attempts reached 7.
     else:
         print(
             f"\n{ALERT}Game over {TEXT}{username.capitalize()}"
@@ -154,6 +184,10 @@ def play(username, age, fav_colour):
 
 
 def val_age(username):
+    """
+    Validate user age.
+    Will only accept numbers.
+    """
     while True:
         result = input(f"\nHow old are you {username.capitalize()}?\n")
         if result.isnumeric():
@@ -171,6 +205,10 @@ def val_age(username):
 
 
 def val_text(val):
+    """
+    Validate name and favourite colour.
+    Will only accept alphabet letters, 2 characters or more.
+    """
     while True:
         result = input(f"\nWhat's your {val}?\n")
         if len(result) > 1 and result.isalpha():
@@ -183,6 +221,10 @@ def val_text(val):
 
 
 def game_rules():
+    """
+    The user will be able to read the rules
+    before proceeding.
+    """
     while True:
         rules = input(
             f"\nDo you want to read the rules? {HIGHLIGHT} y/n {TEXT}\n"
@@ -214,6 +256,10 @@ def game_rules():
 
 
 def main():
+    """
+    Provides a welcome message to the user.
+    Initialize the game after user inputs.
+    """
     print(f"\n\033[42m Welcome To My {TEXT}")
     print(f"\033[42m Hangman Game! {TEXT}")
     print(f"{RESPONSE}{hangman[6]}{TEXT}")
