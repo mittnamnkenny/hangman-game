@@ -41,33 +41,6 @@ def choose_word(age):
         return random.choice(hard_words)[:-1]
 
 
-def calc_colour(fav_colour):
-    """
-    Function for displaying favourite colour.
-    Choses random if not listed.
-    """
-    for key, value in colours.items():
-        # Find a matching key in colours dict.
-        if fav_colour.lower().find(key) != -1:
-            print(
-                f"\n{value}{key.capitalize()} {TEXT}is"
-                f" {random.choice(feedback[0])}."
-                )
-            return value
-    # Favourite colour not in dict.
-    print(
-        f'\n{RESPONSE}Favourite colour'
-        f' "{TEXT}{fav_colour}{RESPONSE}" not listed.\n'
-        )
-    time.sleep(1)
-    random_colour_items = random.choice(list(colours.items()))
-    print(
-        f"{random_colour_items[1]}{random_colour_items[0].capitalize()}"
-        f" {TEXT}was chosen instead."
-        )
-    return random_colour_items[1]
-
-
 guesses = []
 
 
@@ -125,8 +98,6 @@ def play(username, age, fav_colour):
     """
     word = choose_word(age)
 
-    play_colour = calc_colour(fav_colour)
-
     failed_attempts = 0
 
     playing = True
@@ -141,9 +112,9 @@ def play(username, age, fav_colour):
         # Display secret word as underscore if not correct letter guessed.
         for letter in word:
             if letter.lower() in guesses:
-                print(play_colour, letter, end=" ")
+                print(fav_colour, letter, end=" ")
             else:
-                print(play_colour, "_", end=" ")
+                print(fav_colour, "_", end=" ")
         print("")
 
         guess = ask_guess()
@@ -153,7 +124,7 @@ def play(username, age, fav_colour):
         # Code to increment failed_attempts.
         if guess.lower() not in word.lower():
             failed_attempts += 1
-            print(f"{play_colour}{hangman[failed_attempts - 1]}")
+            print(f"{fav_colour}{hangman[failed_attempts - 1]}")
             if failed_attempts == 7:
                 break
 
@@ -168,7 +139,7 @@ def play(username, age, fav_colour):
         print(
             f"\n{RESPONSE}{random.choice(feedback[1]).capitalize()}"
             f" {TEXT}{username.capitalize()} {RESPONSE}you found the word!"
-            f" It was: {play_colour}{word}\n"
+            f" It was: {fav_colour}{word}\n"
             )
         time.sleep(1)
         play_again(username, age, fav_colour)
@@ -177,10 +148,37 @@ def play(username, age, fav_colour):
     else:
         print(
             f"\n{ALERT}Game over {TEXT}{username.capitalize()}"
-            f" {ALERT}the word was: {play_colour}{word}\n"
+            f" {ALERT}the word was: {fav_colour}{word}\n"
             )
         time.sleep(1)
         play_again(username, age, fav_colour)
+
+
+def calc_colour(fav_colour):
+    """
+    Function for displaying favourite colour.
+    Choses random if not listed.
+    """
+    for key, value in colours.items():
+        # Find a matching key in colours dict.
+        if fav_colour.lower().find(key) != -1:
+            print(
+                f"\n{value}{key.capitalize()} {TEXT}is"
+                f" {random.choice(feedback[0])}."
+                )
+            return value
+    # Favourite colour not in dict.
+    print(
+        f'\n{RESPONSE}Favourite colour'
+        f' "{TEXT}{fav_colour}{RESPONSE}" not listed.\n'
+        )
+    time.sleep(1)
+    random_colour_items = random.choice(list(colours.items()))
+    print(
+        f"{random_colour_items[1]}{random_colour_items[0].capitalize()}"
+        f" {TEXT}was chosen instead."
+        )
+    return random_colour_items[1]
 
 
 def val_age(username):
@@ -276,7 +274,8 @@ def main():
             game_rules()
             username = val_text("name")
             age = val_age(username)
-            fav_colour = val_text("favourite colour")
+            fav_colour = calc_colour(val_text("favourite colour"))
+            time.sleep(1)
             play(username, age, fav_colour)
         elif start_playing.lower() == "n":
             raise SystemExit(f"\n{ALERT}Exiting Game.{TEXT}\n")
