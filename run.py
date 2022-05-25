@@ -23,22 +23,20 @@ feedback = [["nice", "a good choice", "great", "perfect", "alright", "ok"],
 
 def choose_word(age):
     """
-    Choses random word from txt file.
-    Based on age input from user.
+    Choose an easy word if age is < 16, or a hard word otherwise.
     """
-    easy_words_file = open("easy_words.txt", "r")
-    easy_words = easy_words_file.readlines()
-    easy_words_file.close()
-
-    hard_words_file = open("hard_words.txt", "r")
-    hard_words = hard_words_file.readlines()
-    hard_words_file.close()
 
     # Random word based on age input.
-    if int(age) < 16:
-        return random.choice(easy_words)[:-1]
+    if age < 16:
+        easy_words_file = open("easy_words.txt", "r")
+        words = easy_words_file.readlines()
+        easy_words_file.close()
     else:
-        return random.choice(hard_words)[:-1]
+        hard_words_file = open("hard_words.txt", "r")
+        words = hard_words_file.readlines()
+        hard_words_file.close()
+
+    return random.choice(words)[:-1]
 
 
 guesses = []
@@ -273,7 +271,7 @@ def main():
                 )
             game_rules()
             username = val_text("name")
-            age = val_age(username)
+            age = int(val_age(username))
             fav_colour = calc_colour(val_text("favourite colour"))
             time.sleep(1)
             play(username, age, fav_colour)
