@@ -7,7 +7,7 @@ HIGHLIGHT = "\033[7m"
 RESPONSE = "\033[92m"
 ALERT = "\033[91m"
 
-colours = {
+COLOURS = {
     "red": "\033[31m",
     "green": "\033[32m",
     "yellow": "\033[33m",
@@ -17,8 +17,10 @@ colours = {
     "purple": "\033[35m"
 }
 
-feedback = [["nice", "a good choice", "great", "perfect", "alright", "ok"],
+FEEDBACK = [["nice", "a good choice", "great", "perfect", "alright", "ok"],
             ["well played", "good job", "you did it", "great success"]]
+
+guesses = []
 
 
 def choose_word(age):
@@ -39,9 +41,6 @@ def choose_word(age):
     return random.choice(words)[:-1]
 
 
-guesses = []
-
-
 def ask_guess():
     """
     Validate user guess.
@@ -49,7 +48,7 @@ def ask_guess():
     Check if letter already been guessed.
     """
     while True:
-        guess = input(f"\n{TEXT}Choose a letter:\n")
+        guess = input(f"\n{TEXT}Choose a letter:\n").strip()
         if guess.isalpha() and len(guess) == 1:
             if guess.lower() not in guesses:
                 return guess
@@ -71,10 +70,10 @@ def play_again(username, age, fav_colour):
     while True:
         again = input(
             f"\n{TEXT}Do you want to play again? {HIGHLIGHT} y/n {TEXT}\n"
-            )
+            ).strip()
         if again.lower() == "y":
             print(
-                f"\n{RESPONSE}{random.choice(feedback[0]).capitalize()},"
+                f"\n{RESPONSE}{random.choice(FEEDBACK[0]).capitalize()},"
                 f" you have decided to play again.{TEXT}"
                 )
             guesses.clear()
@@ -135,7 +134,7 @@ def play(username, age, fav_colour):
     # User found the secret word.
     if not playing:
         print(
-            f"\n{RESPONSE}{random.choice(feedback[1]).capitalize()}"
+            f"\n{RESPONSE}{random.choice(FEEDBACK[1]).capitalize()}"
             f" {TEXT}{username.capitalize()} {RESPONSE}you found the word!"
             f" It was: {fav_colour}{word}\n"
             )
@@ -157,12 +156,12 @@ def calc_colour(fav_colour):
     Function for displaying favourite colour.
     Choses random if not listed.
     """
-    for key, value in colours.items():
-        # Find a matching key in colours dict.
+    for key, value in COLOURS.items():
+        # Find a matching key in COLOURS dict.
         if fav_colour.lower().find(key) != -1:
             print(
                 f"\n{value}{key.capitalize()} {TEXT}is"
-                f" {random.choice(feedback[0])}."
+                f" {random.choice(FEEDBACK[0])}."
                 )
             return value
     # Favourite colour not in dict.
@@ -171,7 +170,7 @@ def calc_colour(fav_colour):
         f' "{TEXT}{fav_colour}{RESPONSE}" not listed.\n'
         )
     time.sleep(1)
-    random_colour_items = random.choice(list(colours.items()))
+    random_colour_items = random.choice(list(COLOURS.items()))
     print(
         f"{random_colour_items[1]}{random_colour_items[0].capitalize()}"
         f" {TEXT}was chosen instead."
@@ -185,9 +184,9 @@ def val_age(username):
     Will only accept numbers.
     """
     while True:
-        result = input(f"\nHow old are you {username.capitalize()}?\n")
+        result = input(f"\nHow old are you {username.capitalize()}?\n").strip()
         if result.isnumeric():
-            if int(result) < 7:
+            if int(result) < 5:
                 print(f"\n{ALERT}You are too young to play this game!")
                 time.sleep(1)
                 raise SystemExit(f"\nExiting Game.{TEXT}\n")
@@ -206,7 +205,7 @@ def val_text(val):
     Will only accept alphabet letters, 2 characters or more.
     """
     while True:
-        result = input(f"\nWhat's your {val}?\n")
+        result = input(f"\nWhat's your {val}?\n").strip()
         if len(result) > 1 and result.isalpha():
             return result
         else:
@@ -224,7 +223,7 @@ def game_rules():
     while True:
         rules = input(
             f"\nDo you want to read the rules? {HIGHLIGHT} y/n {TEXT}\n"
-            )
+            ).strip()
         if rules.lower() == "y":
             print(
                 f"\n{ALERT}h _ n g m _ n"
@@ -233,14 +232,14 @@ def game_rules():
                 f" number of incorrect guesses before the game ends is 7."
                 f" \nGuess the word before your man gets hung. \nIf you"
                 f" are younger than 16 years you are presented with easier"
-                f" words. \n{ALERT}You must be older than 7 years to play this"
+                f" words. \n{ALERT}You must be older than 5 years to play this"
                 f" game.{TEXT}"
                 )
             time.sleep(5)
             break
         elif rules.lower() == "n":
             print(
-                f"\n{RESPONSE}{random.choice(feedback[0]).capitalize()},"
+                f"\n{RESPONSE}{random.choice(FEEDBACK[0]).capitalize()},"
                 f" no rules.{TEXT}"
                 )
             break
@@ -263,10 +262,10 @@ def main():
     while True:
         start_playing = input(
             f"\nDo you want to play? {HIGHLIGHT} y/n {TEXT}\n"
-            )
+            ).strip()
         if start_playing.lower() == "y":
             print(
-                f"\n{RESPONSE}{random.choice(feedback[0]).capitalize()},"
+                f"\n{RESPONSE}{random.choice(FEEDBACK[0]).capitalize()},"
                 f" you have decided to play.{TEXT}"
                 )
             game_rules()
@@ -284,4 +283,5 @@ def main():
                 )
 
 
-main()
+if __name__ == "__main__":
+    main()
