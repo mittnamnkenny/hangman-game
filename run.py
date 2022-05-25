@@ -26,6 +26,12 @@ guesses = []
 def choose_word(age):
     """
     Choose an easy word if age is < 16, or a hard word otherwise.
+
+    Args:
+        age: int - the age of the user.
+
+    Returns:
+        str - a random word, chosen based on the age of the user.
     """
 
     # Random word based on age input.
@@ -66,6 +72,11 @@ def play_again(username, age, fav_colour):
     """
     Ask the user to play again
     without resetting user info.
+
+    Args:
+        username: str - the name of the user.
+        age: int - the age of the user.
+        fav_colour: str - favourite colour based on user input.
     """
     while True:
         again = input(
@@ -92,6 +103,11 @@ def play(username, age, fav_colour):
     Main game function.
     Game logic was inspired by NeuralNine:
     https://www.youtube.com/watch?v=5x6iAKdJB6U
+
+    Args:
+        username: str - the name of the user.
+        age: int - the age of the user.
+        fav_colour: str - favourite colour based on user input.
     """
     word = choose_word(age)
 
@@ -155,6 +171,12 @@ def calc_colour(fav_colour):
     """
     Function for displaying favourite colour.
     Choses random if not listed.
+
+    Args:
+        fav_colour: str - user input favourite colour.
+
+    Returns:
+        str - a value from the COLOURS dict.
     """
     for key, value in COLOURS.items():
         # Find a matching key in COLOURS dict.
@@ -182,6 +204,12 @@ def val_age(username):
     """
     Validate user age.
     Will only accept numbers.
+
+    Args:
+        username: str - the name of the user.
+
+    Returns:
+        str - valid user age.
     """
     while True:
         result = input(f"\nHow old are you {username.capitalize()}?\n").strip()
@@ -203,6 +231,12 @@ def val_text(val):
     """
     Validate name and favourite colour.
     Will only accept alphabet letters, 2 characters or more.
+
+    Args:
+        val: str - chosen name or favourite colour.
+
+    Returns:
+        str - valid name or favourite colour.
     """
     while True:
         result = input(f"\nWhat's your {val}?\n").strip()
