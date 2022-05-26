@@ -80,7 +80,7 @@ def play_again(username, age, fav_colour):
     """
     while True:
         again = input(
-            f"\n{TEXT}Do you want to play again? {HIGHLIGHT} y/n {TEXT}\n"
+            f"{TEXT}Do you want to play again? {HIGHLIGHT} y/n {TEXT}\n"
             ).strip()
         if again.lower() == "y":
             print(
