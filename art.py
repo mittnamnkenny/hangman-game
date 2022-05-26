@@ -1,4 +1,8 @@
-hangman = ["""
+"""
+The ASCII art is from Invent with python:
+https://inventwithpython.com/invent4thed/chapter8.html
+"""
+HANGMAN = ["""
   +--+
   |  |
      |

@@ -1,6 +1,6 @@
 import random
 import time
-from art import hangman
+from art import HANGMAN
 
 TEXT = "\033[0m"
 HIGHLIGHT = "\033[7m"
@@ -137,7 +137,7 @@ def play(username, age, fav_colour):
         # Code to increment failed_attempts.
         if guess.lower() not in word.lower():
             failed_attempts += 1
-            print(f"{fav_colour}{hangman[failed_attempts - 1]}")
+            print(f"{fav_colour}{HANGMAN[failed_attempts - 1]}")
             if failed_attempts == 7:
                 break
 
@@ -291,7 +291,7 @@ def main():
     """
     print(f"\n\033[42m Welcome To My {TEXT}")
     print(f"\033[42m Hangman Game! {TEXT}")
-    print(f"{RESPONSE}{hangman[6]}{TEXT}")
+    print(f"{RESPONSE}{HANGMAN[6]}{TEXT}")
 
     while True:
         start_playing = input(
