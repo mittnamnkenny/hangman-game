@@ -40,8 +40,8 @@ This site is targeted toward people who have an interest in simple word guessing
   - Then the user will then be prompted to start the game.
 
   - The user can choose: 
-      1. (y) - for yes - continue.
-      2. (n) - for no - closing the game.
+      - (y) - for yes - continue.
+      - (n) - for no - closing the game.
 
     An error message informs the user if their entry is not in the correct format: ”That is not a valid option, Please try again.” The user must enter (y) to continue with the game.
 
@@ -52,8 +52,8 @@ This site is targeted toward people who have an interest in simple word guessing
   - After the user has decided to play the game, the user will be asked if they wish to read the rules before proceeding:
 
   - The user can choose: 
-      1. (y) - for yes - read the rules. 
-      2. (n) - for no - continue without reading the rules.
+      - (y) - for yes - read the rules. 
+      - (n) - for no - continue without reading the rules.
 
     An error message informs the user if their entry is not in the correct format: ”That is not a valid option, Please try again.” The user must enter (y) or (n) to continue.
 
@@ -77,10 +77,10 @@ This site is targeted toward people who have an interest in simple word guessing
 
   If the user enters an incorrect value in the setup process, an error message is displayed: ”That is not a valid option, Please try again.”
 
-##### Matching Favourite colour
+##### Matching Favourite colour:
 ![Setup](documentation/setup.png)
 
-##### Random Favourite colour
+##### Random Favourite colour:
 ![Colours](documentation/colours.png)
 
 #### 4. Game area
@@ -103,15 +103,15 @@ When the user enters an already guessed letter again, the following message appe
   - The user will be presented with a short message and then asked to play again: Do you want to play again? y/n
 
   - The user can choose: 
-      1. (y) - for yes - this will start a new game, with initial inputs.
-      2. (n) - for no - closing the game.
+      - (y) - for yes - this will start a new game, with initial inputs.
+      - (n) - for no - closing the game.
 
     An error message informs the user if their entry is not in the correct format: ”That is not a valid option, Please try again.” The user must enter (y) or (n) to continue.
 
-##### User found the word
+##### User found the word:
 ![Win](documentation/win.png)
 
-##### Failed attempts reached 7
+##### Failed attempts reached 7:
 ![Lose](documentation/lose.png)
 
 #### Additional features
@@ -122,3 +122,32 @@ When the user enters an already guessed letter again, the following message appe
 
 - This game is popular in Sweden and in the future I would like to do a translated version of this game: Hänga gubbe.
 
+## Design
+
+- To make this game more attractive to the user, I have used the following code to print coloured text:
+
+  - `<TEXT = "\033[0m">`
+  - `<HIGHLIGHT = "\033[7m">`
+  - `<RESPONSE = "\033[92m">`
+  - `<ALERT = "\033[91m">`
+
+- The favourite colours that are listed in the game:
+
+  -  `<"red": "\033[31m",>`
+  -  `<"green": "\033[32m",>`
+  -  `<"yellow": "\033[33m",>`
+  -  `<"blue": "\033[34m",>`
+  -  `<"pink": "\033[95m",>`
+  -  `<"cyan": "\033[36m",>`
+  -  `<"purple": "\033[35m">`
+
+## Technologies Used
+
+- Python.
+- [Am I Responsive:](http://ami.responsivedesign.is) Checking the responsive.
+- [PEP8:](http://pep8online.com/) Check your code for PEP8 requirements.
+- [Lucidchart:](https://www.lucidchart.com/pages/) Was used to create the flow chart.
+- [Writer:](https://writer.com/grammar-checker/) Free Grammar Check.
+- [Git](https://git-scm.com/) Git was used for version control by utilizing the Gitpod terminal to commit to Git and Push to GitHub.
+- [GitHub:](https://github.com/) GitHub is used to store the projects code after being pushed from Git.
+- [Heroku:](https://dashboard.heroku.com/) for deployment of the application.
