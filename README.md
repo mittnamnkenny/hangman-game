@@ -215,3 +215,46 @@ User stories are numbered 1 to 7 and the features are:
 - This is not a bug, but I've noticed that the background colour on the Heroku app is #000. On the GitPod terminal it is #171717.
   Therefor the text colours will look a bit different on Heroku, in my opinion it looks better with background colour #171717.
 
+## Deployment
+
+The site was deployed to Heroku. The steps to deploy are as follows:
+  1. Log in to Heroku.
+  2. Click "Create new app".
+  3. Choose app name and choose a region.
+  4. Click "Create app".
+  5. Navigate to the "settings" tab.
+  6. "Click "Reveal Config Vars".
+  7. Add Config Var in Heroku's Settings. The key is PORT and the value is 8000
+  8. Scroll down to "Buildpacks".
+  9. Click "Add Buildpack".
+  10. First add "python", click save.
+  11. Second add "nodejs", click save.
+
+### Automated Deployments from GitHub disabled by Heroku.
+
+Follow the steps below to deploy from your Gitpod workspace:
+  1. Open the terminal.
+  2. command: heroku login -i
+  3. Get your app name from heroku.
+  4. command: heroku apps
+  5. Set the heroku remote. (Replace <app_name> with your actual app name and remove the <> characters)
+  6. command: heroku git:remote -a <app_name>
+  7. Add and commit any changes to your code if applicable
+  8. command: git add . && git commit -m "Deploy to Heroku via CLI"
+  9. Push to both GitHub and Heroku
+  10. command: git push origin main
+  11. command: git push heroku main
+
+## Credits
+
+- [Am I Responsive:](http://ami.responsivedesign.is) Checking the responsive.
+- [Lucidchart:](https://www.lucidchart.com/pages/) Was used to create the flow chart.
+- [Writer:](https://writer.com/grammar-checker/) Free Grammar Check.
+- [NeuralNine:](https://www.youtube.com/watch?v=5x6iAKdJB6U) Inspiration for creating A Simple Hangman Game in Python.
+- [Stackoverflow:](https://stackoverflow.com/questions/287871/how-do-i-print-colored-text-to-the-terminal) How do I print colored text to the terminal.
+- [Invent with python:](https://inventwithpython.com/invent4thed/chapter8.html) Hangman ASCII art.
+- [Powerlanguage:](https://github.com/powerlanguage/word-lists/blob/master/1000-most-common-words.txt) 1000 most common words.
+
+### Acknowledgements
+
+- My mentor at Code Institute Brian Macharia for code review, help and feedback. Very much appreciated!
